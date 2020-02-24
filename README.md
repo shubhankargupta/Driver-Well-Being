@@ -1,10 +1,45 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Driver-Well-Being
 
-In the project directory, you can run:
+MERN stack application to improve the well being of Uber and Lyft drivers by analyzing their Fitbit Data and providing recommendations to lead a healthy lifestyle. 
 
-### `npm start`
+## Prerequisties for the Application
+
+Install the following software/databases in your system
+
+1. [Download Node.js] (https://nodejs.org/en/download/)
+2. [Download MongoDB Community Edition] (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
+
+## Install dependencies
+ 
+ Navigate to the project directory and run the following command on the terminal
+ 
+### npm install
+ 
+## How to run the application
+
+Open two different terminals.
+In the first terminal, we will run the server (running on port 4000).
+In the second terminal, we will run the client (running on port 3000).
+
+In the first terminal, navigate to the project directory.
+Then navigate to the backend directory
+
+### cd backend
+
+To run the server, enter the command 
+
+### npm start
+
+Now in the second terminal, navigate to the project directory.
+Then navigate to the src directory
+
+### cd src
+
+To run the client, enter the command 
+
+### npm start
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
