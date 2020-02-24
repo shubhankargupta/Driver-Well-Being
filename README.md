@@ -15,7 +15,7 @@ Install the following software/databases in your system
  
  Navigate to the project directory and run the following command on the terminal
  
-### 'npm install'
+### npm `install`
  
 ## How to run the application
 
@@ -26,20 +26,22 @@ In the second terminal, we will run the client (running on port 3000).
 In the first terminal, navigate to the project directory.
 Then navigate to the backend directory
 
-### 'cd backend'
+### `cd backend`
 
 To run the server, enter the command 
 
-### 'npm start'
+### `npm start`. 
+
+The above command will run the mongoDB server on port 4000
 
 Now in the second terminal, navigate to the project directory.
 Then navigate to the src directory
 
-### 'cd src'
+### `cd src`
 
 To run the client, enter the command 
 
-### 'npm start'
+### `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
