@@ -8,12 +8,12 @@ MERN stack application to improve the well being of Uber and Lyft drivers by ana
 
 Install the following software/databases in your system
 
-1. [Download Node.js] (https://nodejs.org/en/download/)
-2. [Download MongoDB Community Edition] (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
+1. Download Node.js (https://nodejs.org/en/download/)
+2. Download MongoDB Community Edition (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
 
 ## Install dependencies
  
- Navigate to the project directory and run the following command on the terminal
+Navigate to the project directory and run the following command on the terminal
  
 ### `npm install`
  
