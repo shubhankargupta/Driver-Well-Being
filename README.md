@@ -15,7 +15,7 @@ Install the following software/databases in your system
  
  Navigate to the project directory and run the following command on the terminal
  
-### npm `install`
+### `npm install`
  
 ## How to run the application
 
