@@ -10,9 +10,9 @@ class App extends Component {
   render() {
     return (
       <Router> 
-        <div className="container">
+       <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="https://www.fitbit.com/us/home" target="_blank">
+            <a className="navbar-brand" href="https://www.fitbit.com/us/home" target="_blank">
               <img src={logo} width="100" height="100" alt="CodingTheSmartWay.com" />
             </a>
             <Link to="/" className="navbar-brand">Well Being App</Link>                                                                         
@@ -22,17 +22,18 @@ class App extends Component {
                   <Link to="/show" className="nav-link">Todos</Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/create" className="nav-link">Create Todo</Link>
+                  <Link to="/create" className="nav-link">Create To-do</Link>
                 </li>
               </ul>
             </div>
-          </nav>
+          </nav> 
+
           <br/>
           <Route path="/" exact component={LineGraph} />
           <Route path="/show" component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
-        </div>
+        </div> 
       </Router>
     );
   }

@@ -68,7 +68,7 @@ export default class LineGraph extends Component
 
 
     
-    <Example label="percentage of steps completed">
+    <Example label="percentage of steps (3000 steps) completed">
       <AnimatedProgressProvider
         valueStart={0}
         valueEnd={this.state.percentage}

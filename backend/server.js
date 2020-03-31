@@ -110,6 +110,19 @@ todoRoutes.route('/add').post(function(req, res) {
         });
 });
 
+//Delete Player
+todoRoutes.route('/delete/:id').delete(function(req,res) {
+
+    Todo.deleteOne({_id: req.params.id},(err, Todo) => {
+        if(err)
+        {
+            res.send(err);
+        }
+        res.json({message: 'Successfully deleted Todo'});
+    });
+})
+
+
 app.use('/todos', todoRoutes);
 
 app.listen(PORT, function() {
