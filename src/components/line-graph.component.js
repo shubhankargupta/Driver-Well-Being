@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Chart} from "react-google-charts";
 
+
 //Import react-circular-progressbar module and styles
 import {
   CircularProgressbar,
@@ -27,7 +28,8 @@ export default class LineGraph extends Component
 		super(props);
 
 		this.state={
-			percentage : 49
+			spercentage : 49,
+            cpercentage : 56
 		}
 	}
 
@@ -64,32 +66,39 @@ export default class LineGraph extends Component
   }}
   rootProps={{ 'data-testid': '1' }}
 />
-   
 
-
-    
-    <Example label="percentage of steps (3000 steps) completed">
-      <AnimatedProgressProvider
-        valueStart={0}
-        valueEnd={this.state.percentage}
-        duration={1.4}
-        easingFunction={easeQuadInOut}
-   
-      >
-        {value => {
-          const roundedValue = Math.round(value);
-          return (
-            <CircularProgressbar
-              value={value}
-              text={`${roundedValue}%`}
-              /* This is important to include, because if you're fully managing the
-        animation yourself, you'll want to disable the CSS animation. */
-              styles={buildStyles({ pathTransition: "none" })}
-            />
-          );
-        }}
-      </AnimatedProgressProvider>
+ 
+    <h3>Total Steps taken: 7000 </h3>
+    <Example>
+      <CircularProgressbarWithChildren value={66}>
+        {/* Put any JSX content in here that you'd like. It'll be vertically and horizonally centered. */}
+        <img
+          style={{ width: 80, marginTop: -5 }}
+          src="https://i.imgur.com/mSq9VJ8.png"
+          alt="doge"
+        />
+        <div style={{ fontSize: 25, marginTop: -7 }}>
+          <strong>66% steps</strong> 
+        </div>
+      </CircularProgressbarWithChildren>
     </Example>
+   
+  
+    <h3> Total Calories burned: 140 kcals </h3>
+    <Example>
+      <CircularProgressbarWithChildren value={49}>
+        {/* Put any JSX content in here that you'd like. It'll be vertically and horizonally centered. */}
+        <img
+          style={{ width: 80, marginTop: -5 }}
+          src="https://i.imgur.com/kswLmbV.jpg"
+          alt="doge"
+        />
+        <div style={{ fontSize: 25, marginTop: -5 }}>
+          <strong>49% </strong> burned
+        </div>
+      </CircularProgressbarWithChildren>
+    </Example>
+    
 
 
 </div>
@@ -98,6 +107,7 @@ export default class LineGraph extends Component
 			)
 	}
 }
+
 
 function Example(props) {
   return (
@@ -112,3 +122,4 @@ function Example(props) {
     </div>
   );
 }
+

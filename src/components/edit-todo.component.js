@@ -70,6 +70,8 @@ export default class EditTodo extends Component {
         console.log(obj);
         axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
+
+            alert('Goal updated successfully');
         
         this.props.history.push('/');
     }
@@ -88,7 +90,7 @@ export default class EditTodo extends Component {
                                 />
                     </div>
                     <div className="form-group">
-                        <label>Responsible: </label>
+                        <label>Duration: </label>
                         <input 
                                 type="text" 
                                 className="form-control"

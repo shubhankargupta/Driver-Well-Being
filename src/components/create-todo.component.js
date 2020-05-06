@@ -48,6 +48,8 @@ export default class CreateTodo extends Component {
         axios.post('http://localhost:4000/todos/add', newTodo)
             .then(res => console.log(res.data));
 
+        alert('Goal added successfully');
+
         
         this.setState({
             todo_description: '',
@@ -56,10 +58,14 @@ export default class CreateTodo extends Component {
             todo_completed: false
         })
     }
+
+    
+
     render() {
         return (
             <div style={{marginTop: 10}}>
                 <h3>Create New To-do</h3>
+
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group"> 
                         <label>Description: </label>
@@ -70,7 +76,7 @@ export default class CreateTodo extends Component {
                                 />
                     </div>
                     <div className="form-group">
-                        <label>Responsible: </label>
+                        <label>Duration: </label>
                         <input 
                                 type="text" 
                                 className="form-control"

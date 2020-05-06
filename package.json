@@ -12,6 +12,7 @@
     "fitbit": "0.0.7",
     "fitbit-node": "^2.2.0",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.1",
     "react-circular-progressbar": "^2.0.3",
     "react-dom": "^16.12.0",
     "react-google-charts": "^3.0.15",

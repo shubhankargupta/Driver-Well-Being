@@ -18,3 +18,14 @@ code {
   text-decoration: line-through;
 }
 
+
+h3 {
+  text-align: left;
+}
+
+.center-elements {
+  width: 200px;
+  height: 300px;
+   margin: 0 auto;
+}
+

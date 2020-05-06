@@ -5,6 +5,7 @@ import LineGraph from "./components/line-graph.component";
 import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
+import SendMail from  "./components/send-mail.component";
 import logo from "./wellbeing.png";
 class App extends Component {
   render() {
@@ -24,6 +25,9 @@ class App extends Component {
                 <li className="navbar-item">
                   <Link to="/create" className="nav-link">Create To-do</Link>
                 </li>
+                <li className="navbar-item">
+                  <Link to="/email" className="nav-link">Send Data</Link>
+                </li>
               </ul>
             </div>
           </nav> 
@@ -33,6 +37,7 @@ class App extends Component {
           <Route path="/show" component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
+          <Route path="/email" component={SendMail} />
         </div> 
       </Router>
     );
