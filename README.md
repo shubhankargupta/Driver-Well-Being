@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Driver-Well-Being
 
-MERN stack application to improve the well being of Uber and Lyft drivers by analyzing their Fitbit Data and providing recommendations to lead a healthy lifestyle. 
+MERN stack application to improve the well being of workers by collecting their Fitbit Sensing Data and sharing with another person (i.e. supporter) who can help them to persuade to set and achieve personalized goals.  
 
 ## Prerequisties for the Application
 
