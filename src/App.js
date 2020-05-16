@@ -16,17 +16,11 @@ class App extends Component {
             <a className="navbar-brand" href="https://www.fitbit.com/us/home" target="_blank">
               <img src={logo} width="100" height="100" alt="CodingTheSmartWay.com" />
             </a>
-            <Link to="/" className="navbar-brand">Well Being App</Link>                                                                         
+            <Link to="/" className="navbar-brand">My Info</Link>                                                                         
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
-                  <Link to="/show" className="nav-link">Todos</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/create" className="nav-link">Create To-do</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/email" className="nav-link">Send Data</Link>
+                  <Link to="/show" className="nav-link"><b>Todos</b></Link>
                 </li>
               </ul>
             </div>
@@ -44,3 +38,13 @@ class App extends Component {
   }
 }
 export default App;
+
+
+/*
+<li className="navbar-item">
+                  <Link to="/email" className="nav-link"><b>Share Data</b></Link>
+                </li>
+<li className="navbar-item">
+                  <Link to="/create" className="nav-link">Create To-do</Link>
+                </li>
+*/

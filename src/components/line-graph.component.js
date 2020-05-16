@@ -68,7 +68,7 @@ export default class LineGraph extends Component
 />
 
  
-    <h3>Total Steps taken: 7000 </h3>
+    <h3>Target Steps: 8000 </h3>
     <Example>
       <CircularProgressbarWithChildren value={66}>
         {/* Put any JSX content in here that you'd like. It'll be vertically and horizonally centered. */}
@@ -78,13 +78,13 @@ export default class LineGraph extends Component
           alt="doge"
         />
         <div style={{ fontSize: 25, marginTop: -7 }}>
-          <strong>66% steps</strong> 
+          <strong>77% steps</strong> 
         </div>
       </CircularProgressbarWithChildren>
     </Example>
    
   
-    <h3> Total Calories burned: 140 kcals </h3>
+    <h3> Target Calories burned: 150 kcals </h3>
     <Example>
       <CircularProgressbarWithChildren value={49}>
         {/* Put any JSX content in here that you'd like. It'll be vertically and horizonally centered. */}

@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert'
+import Alert from 'react-bootstrap/Alert';
+import Rating from '@material-ui/lab/Rating';
+import { makeStyles } from '@material-ui/core/styles';
 
 const Todo = props => (
 
@@ -11,6 +13,7 @@ const Todo = props => (
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_responsible}</td>
         <td>{props.todo.todo_priority}</td>
+        <td>{props.todo.todo_completed ? "Done" : "In Progress"}</td>
         <td>
             <Link to={"/edit/"+props.todo._id}><Button variant="primary">Edit</Button>{' '}</Link>                                
         </td>
@@ -104,9 +107,10 @@ export default class TodosList extends Component {
                 <table className="table table-hover" style={{ marginTop: 20 }} >
                     <thead>
                         <tr>
-                            <th>Goals</th>
-                            <th>Duration/Day</th>
-                            <th>Priority</th>
+                            <th>Activity</th>
+                            <th>Duration</th>
+                            <th>Days</th>
+                            <th>Status</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -115,6 +119,29 @@ export default class TodosList extends Component {
                         { this.todoList() }
                     </tbody>
                 </table>
+  
+
+            <br/>
+            
+            
+            <div class="left-btn">
+             <Link to="/create"><Button variant="primary">Add Activity</Button>{' '}</Link>
+           </div>
+         <div class="right-btn">
+             <Link to="/email"><Button variant="primary">Share Data</Button>{' '}</Link>
+         </div>
+
+            
+            <br/>
+            <br/>
+            <br/>
+            <Alert  variant="info">
+            Rate your supporter
+            </Alert>       
+            <Rating name="half-rating" defaultValue={2} precision={0.5} />
+
+
+
             </div>
         )
     }
