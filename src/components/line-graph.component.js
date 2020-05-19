@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import {Chart} from "react-google-charts";
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 //Import react-circular-progressbar module and styles
@@ -29,13 +32,81 @@ export default class LineGraph extends Component
 
 		this.state={
 			spercentage : 49,
-            cpercentage : 56
+            cpercentage : 56,
+            name: 'Shubhankar Gupta',
+            gender: 'male',
+            weight: 55,
+            height: 156
 		}
+
+		this.nameChange=this.nameChange.bind(this);
+        this.sexChange=this.sexChange.bind(this);
+        this.weightChange = this.weightChange.bind(this);
+        this.heightChange = this.heightChange.bind(this);
 	}
+
+	nameChange(e)
+    {
+     this.setState({name: e.target.value});
+    }
+
+   sexChange(e)
+   {
+    this.setState({gender: e.target.value})
+   }  
+
+   weightChange(e)
+   {
+    this.setState({weight: e.target.value})
+   }
+
+   heightChange(e)
+   {
+    this.setState({height: e.target.value})
+   }
 
 	render(){
 		return(
 			     <div>
+			     <div className='rowC'>
+			     <form>
+                <p>Name:</p>
+                    <input
+                     type='text'
+                     value={this.state.name}
+                      onChange={this.nameChange}
+                  />
+                  <br/>
+                  <br/>
+                <p>Sex:</p>
+                    <select value={this.state.gender} onChange={this.sexChange}> 
+                     <option name="male"> Male</option>
+                     <option name="female">Female</option>
+                    </select>
+           
+                   <br/>
+                   <br/>
+                <p> Weight (lb): </p>
+                    <input type='number'
+                    value = {this.state.weight} 
+                    onChange={this.weightChange}
+                    />
+                   <br/>
+                   <br/>
+
+                <p> Height (cm): </p>
+                    <input type='number'
+                    value = {this.state.height} 
+                    onChange={this.heightChange}
+                    />
+                   <br/>
+
+                  </form>
+                  </div>
+
+        <br/>
+        <br/>
+
                  <Chart
   width={'600px'}
   height={'400px'}

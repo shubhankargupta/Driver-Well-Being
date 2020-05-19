@@ -6,6 +6,7 @@ import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
 import SendMail from  "./components/send-mail.component";
+import NodosList from "./components/nodos-list.component";
 import logo from "./wellbeing.png";
 class App extends Component {
   render() {
@@ -20,7 +21,10 @@ class App extends Component {
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
-                  <Link to="/show" className="nav-link"><b>Todos</b></Link>
+                  <Link to="/show" className="nav-link"><b>Supporter</b></Link>
+                </li>
+                <li className="navbar-item">
+                  <Link to="/dup" className="nav-link"><b>Supportee</b></Link>
                 </li>
               </ul>
             </div>
@@ -32,6 +36,7 @@ class App extends Component {
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
           <Route path="/email" component={SendMail} />
+          <Route path="/dup" component={NodosList} />
         </div> 
       </Router>
     );
