@@ -31,6 +31,10 @@ h3 {
 
 .left-btn { float: left; }
 .right-btn { float: right; }
+.center-btn {float: center;}
 
 .rowC{display:flex; flex-direction:row;}
 
+h1, p {
+  font-family: Lato;
+}

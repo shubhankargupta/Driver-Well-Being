@@ -60,26 +60,6 @@ const connection2 = mongoose.createConnection('mongodb://127.0.0.1:27017/nodos',
 let Todo = require('./todo.model')(connection);
 let Nodo = require('./nodo.model')(connection2);
 
-//New Line
-/*let Nodo = new Schema({
-    todo_description: {
-        type: String
-    },
-    todo_responsible: {
-        type: String
-    },
-    todo_priority: {
-        type: String
-    },
-    todo_completed: {
-        type: Boolean
-    }
-});
-*/
-
-
-
-
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -93,75 +73,6 @@ app.use(bodyParser.json());
 instance1.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true }); */
 //const connection1 = instance1.connection;*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-const connection = mongoose.createConnection('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
-const connection2 = mongoose.createConnection('mongodb://127.0.0.1:27017/nodos', { useNewUrlParser: true });
-
-connection.model('Todo',Nodo);
-connection2.model('Nodo',Nodo);
-*/
-
-
-
-//---------------------------------
-
-
-
-
-
-todoRoutes.route('/update/:id').post(function(req, res) {
-    Todo.findById(req.params.id, function(err, todo) {
-        if (!todo)
-            res.status(404).send("data is not found");
-        else
-            todo.todo_description = req.body.todo_description;
-            todo.todo_responsible = req.body.todo_responsible;
-            todo.todo_priority = req.body.todo_priority;
-            todo.todo_completed = req.body.todo_completed;
-
-            todo.save().then(todo => {
-                res.json('Todo updated!');
-            })
-            .catch(err => {
-                res.status(400).send("Update not possible");
-            });
-    });
-});
-
-todoRoutes.route('/add').post(function(req, res) {
-    let todo = new Todo(req.body);
-    todo.save()
-        .then(todo => {
-            res.status(200).json({'todo': 'todo added successfully'});
-        })
-        .catch(err => {
-            res.status(400).send('adding new todo failed');
-        });
-});
-
-//Delete Player
-todoRoutes.route('/delete/:id').delete(function(req,res) {
-
-    Todo.deleteOne({_id: req.params.id},(err, Todo) => {
-        if(err)
-        {
-            res.send(err);
-        }
-        res.json({message: 'Successfully deleted Todo'});
-    });
-})
 
 //New Line
 //New Nodo
@@ -229,6 +140,51 @@ todoRoutes.route('/nodo/delete/:id').delete(function(req,res) {
         res.json({message: 'Successfully deleted Todo'});
     });
 })
+
+//---------------------------------------------------------------------
+
+todoRoutes.route('/update/:id').post(function(req, res) {
+    Todo.findById(req.params.id, function(err, todo) {
+        if (!todo)
+            res.status(404).send("data is not found");
+        else
+            todo.todo_description = req.body.todo_description;
+            todo.todo_responsible = req.body.todo_responsible;
+            todo.todo_priority = req.body.todo_priority;
+            todo.todo_completed = req.body.todo_completed;
+
+            todo.save().then(todo => {
+                res.json('Todo updated!');
+            })
+            .catch(err => {
+                res.status(400).send("Update not possible");
+            });
+    });
+});
+
+todoRoutes.route('/add').post(function(req, res) {
+    let todo = new Todo(req.body);
+    todo.save()
+        .then(todo => {
+            res.status(200).json({'todo': 'todo added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('adding new todo failed');
+        });
+});
+
+//Delete Player
+todoRoutes.route('/delete/:id').delete(function(req,res) {
+
+    Todo.deleteOne({_id: req.params.id},(err, Todo) => {
+        if(err)
+        {
+            res.send(err);
+        }
+        res.json({message: 'Successfully deleted Todo'});
+    });
+})
+
 
 todoRoutes.route('/:id').get(function(req, res) {    
     let id = req.params.id;

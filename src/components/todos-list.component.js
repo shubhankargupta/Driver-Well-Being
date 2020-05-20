@@ -23,21 +23,6 @@ const Todo = props => (
     </tr>
 )
 
-/*
-<tr>
-        <td>{props.todo.todo_description}</td>
-        <td>{props.todo.todo_responsible}</td>
-        <td>{props.todo.todo_priority}</td>
-        <td>
-            <Link to={"/edit/"+props.todo._id}>Edit</Link>                                
-        </td>
-        <td>
-            <a href="#!" onClick={deletePlayer.bind(this,props)}> Delete </a>
-        </td>
-    </tr>
-    <h3 style={{marginRight: 2 + 'em'}} > {this.state.label} </h3>
-*/
-
 
 function deletePlayer(props)
 {
@@ -127,9 +112,7 @@ export default class TodosList extends Component {
             <div class="left-btn">
              <Link to="/create"><Button variant="primary">Add Activity</Button>{' '}</Link>
            </div>
-         <div class="right-btn">
-             <Link to="/email"><Button variant="primary">Share Data</Button>{' '}</Link>
-         </div>
+         
 
             
             <br/>
