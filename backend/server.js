@@ -83,24 +83,7 @@ let Nodo = require('./nodo.model')(connection2);
 app.use(cors());
 app.use(bodyParser.json());
 
-/*mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
-const connection = mongoose.connection;
 
-connection.once('open', function() {
-    console.log("MongoDB database connection established successfully");
-})
-
-
-const Mongoose = require('mongoose').Mongoose;
-
-const instance2 = new Mongoose();
-instance2.connect('mongodb://127.0.0.1:27017/nodos', { useNewUrlParser: true });
-const connection2 = instance2.connection;
-
-connection2.once('open', function() {
-    console.log("MongoDB database 2 connection established successfully");
-})
-*/
 
 
 
@@ -297,4 +280,23 @@ todoRoutes.route('/todo/heart-rate', (req, res) => {
 });
 
 
+*/
+
+/*mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
+const connection = mongoose.connection;
+
+connection.once('open', function() {
+    console.log("MongoDB database connection established successfully");
+})
+
+
+const Mongoose = require('mongoose').Mongoose;
+
+const instance2 = new Mongoose();
+instance2.connect('mongodb://127.0.0.1:27017/nodos', { useNewUrlParser: true });
+const connection2 = instance2.connection;
+
+connection2.once('open', function() {
+    console.log("MongoDB database 2 connection established successfully");
+})
 */
