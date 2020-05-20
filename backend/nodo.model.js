@@ -16,5 +16,8 @@ let Nodo = new Schema({
     }
 });
 
-module.exports = mongoose.model('Nodo', Nodo);
+//module.exports = mongoose.model('Nodo', Nodo);
 
+module.exports = function(connection) {
+    return connection.model('Nodo', Nodo);
+};

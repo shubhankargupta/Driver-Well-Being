@@ -14,6 +14,7 @@ const client = new FitbitApiClient({
     apiVersion: '1.2' // 1.2 is the default
 });
 
+
 // redirect the user to the Fitbit authorization page
 app.get("/authorize", (req, res) => {
     // request access to the user's activity, heartrate, location, nutrion, profile, settings, sleep, social, and weight scopes
@@ -49,9 +50,15 @@ app.get("/heartrate/:date", function(req, res) {
 });
 
 
+const connection = mongoose.createConnection('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
+const connection2 = mongoose.createConnection('mongodb://127.0.0.1:27017/nodos', { useNewUrlParser: true });
 
-let Todo = require('./todo.model');
-let Nodo = require('./nodo.model');
+// connection.model('Todo',Nodo);
+// connection2.model('Nodo',Nodo);
+
+// Passing connections to connect to different databases.
+let Todo = require('./todo.model')(connection);
+let Nodo = require('./nodo.model')(connection2);
 
 //New Line
 /*let Nodo = new Schema({
@@ -76,14 +83,14 @@ let Nodo = require('./nodo.model');
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
+/*mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
 })
 
-/*
+
 const Mongoose = require('mongoose').Mongoose;
 
 const instance2 = new Mongoose();
@@ -127,24 +134,9 @@ connection2.model('Nodo',Nodo);
 
 //---------------------------------
 
-todoRoutes.route('/').get(function(req, res) {
-    Todo.find(function(err, todos) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json(todos);
-        }
-    });
-});
 
 
 
-todoRoutes.route('/:id').get(function(req, res) {
-    let id = req.params.id;
-    Todo.findById(id, function(err, todo) {
-        res.json(todo);
-    });
-});
 
 todoRoutes.route('/update/:id').post(function(req, res) {
     Todo.findById(req.params.id, function(err, todo) {
@@ -190,10 +182,11 @@ todoRoutes.route('/delete/:id').delete(function(req,res) {
 
 //New Line
 //New Nodo
-todoRoutes.route('/nodo').get(function(req, res) {
+todoRoutes.route('/nodo').get(function(req, res) {    
     Nodo.find(function(err, nodos) {
         if (err) {
             console.log(err);
+            res.json(err);
         } else {
             res.json(nodos);
         }
@@ -203,8 +196,10 @@ todoRoutes.route('/nodo').get(function(req, res) {
 
 
 todoRoutes.route('/nodo/:id').get(function(req, res) {
+    console.log('Here: /nodo/:id');
     let id = req.params.id;
     Nodo.findById(id, function(err, todo) {
+        console.log(err);
         res.json(nodo);
     });
 });
@@ -230,9 +225,10 @@ todoRoutes.route('/nodo/update/:id').post(function(req, res) {
 
 todoRoutes.route('/node/add').post(function(req, res) {
     let nodo = new Nodo(req.body);
+    console.log(nodo);
     nodo.save()
         .then(nodo => {
-            res.status(200).json({'nodo': 'nodo added successfully'});
+            res.status(200).json({'nodo': 'nodo added successfully'});            
         })
         .catch(err => {
             res.status(400).send('adding new nodo failed');
@@ -251,14 +247,54 @@ todoRoutes.route('/nodo/delete/:id').delete(function(req,res) {
     });
 })
 
+todoRoutes.route('/:id').get(function(req, res) {    
+    let id = req.params.id;
+    Todo.findById(id, function(err, todo) {
+        res.json(todo);
+    });
+});
 
+todoRoutes.route('/').get(function(req, res) {
+    Todo.find(function(err, todos) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(todos);
+        }
+    });
+});
 
 
 //---------------------
+
+// Log incoming requests
+app.use((req, res, next) => {
+    console.log (req.method, req.url);
+    next();
+});
+
+app.use((err, req, res, next) => {
+    res.status(404).json({
+        message: "Not Found!"
+    });
+});
+
 app.use('/todos', todoRoutes);
-
-
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
+
+/*
+
+const axios = require('axios');
+todoRoutes.route('/todo/heart-rate', (req, res) => {
+    axios.get(`https://api.fitbit.com/1/user/${userId}/activities/heart/date/[date]/[period].json`).then(response => {
+        res.json(response.data);
+    }).catch(err => {
+        console.log(err);
+    })
+});
+
+
+*/
