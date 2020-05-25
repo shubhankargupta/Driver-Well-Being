@@ -7,9 +7,15 @@ import Tab from 'react-bootstrap/Tab';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
+import axios from 'axios';
 import * as emailjs from 'emailjs-com';
 
 
+const emailMap = {
+  '#link1': 'samuel@yahoo.com',
+  '#link2': 'katherinej@gmail.com',
+  '#link3': 'derekb@gmail.com',
+};
 
 export default class SendMail extends Component
 {
@@ -23,11 +29,47 @@ export default class SendMail extends Component
         this.resetForm = this.resetForm.bind(this);
     }
 
+    handleEmail = e => {
+      this.setState({ email : e.target.value})
+    }
+
+    handleMessage = e => {
+      this.setState({ message : e.target.value})
+    }
+
+    handleSubmit = (event) => {
+
+      console.log("Hello");
+      event.preventDefault();
+      const {email, message} = this.state;
+
+      let params = {
+        email: this.state.email,
+        message: this.state.message
+      }
+
+      let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+            "Access-Control-Allow-Origin": "*",
+        }
+      };
+
+      const form =  axios.post('/api/form',params,axiosConfig).then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      console.log(params);
+
+      this.resetForm();
+    };
 
 
 
-
-    handleSubmit(event) 
+    /*handleSubmit(event) 
     {
         console.log(this.state.email);
         console.log(this.state.message);
@@ -48,7 +90,7 @@ export default class SendMail extends Component
       'template_6xORTsAZ',
        templateParams,
       'user_1eQPnKbW6xEv8P5xLJC4K'
-     )
+     )*/
 
      /*Email.send({
     Host : "smtp.yourisp.com",
@@ -64,12 +106,6 @@ export default class SendMail extends Component
 
     
  
-
-     this.resetForm()
-        
-
-    }
-
 
     resetForm() {
     this.setState({
@@ -93,20 +129,24 @@ export default class SendMail extends Component
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
   <Row>
     <Col sm={4}>
-      <ListGroup>
+      <ListGroup onSelect={eventKey => {
+        this.setState((state) => {
+          return { email: emailMap[eventKey] };
+        });
+      }}>
         <ListGroup.Item action href="#link1">
-          Samuel Lionel <Badge variant="success">12</Badge>
+          Samuel Lionel <Badge variant="success">5</Badge>
         </ListGroup.Item>
         <ListGroup.Item action href="#link2">
-          Katherine Jones  <Badge variant="success">11</Badge>
+          Katherine Jones  <Badge variant="success">4.5</Badge>
         </ListGroup.Item>
       <ListGroup.Item action href="#link3">
-          Derek Beth  <Badge variant="success">9</Badge>
+          Derek Beth  <Badge variant="success">4</Badge>
         </ListGroup.Item>
       </ListGroup>
     </Col>
     <Col sm={8}>
-      <Tab.Content>
+      <Tab.Content > 
         <Tab.Pane eventKey="#link1">
           <h3> samuel@yahoo.com </h3>
         </Tab.Pane>
@@ -122,21 +162,28 @@ export default class SendMail extends Component
 </Tab.Container> 
 <br/>
 <br/>		
-    <Form>
+    <Form onSubmit={this.handleSubmit}>
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" onChange = {(event) => this.setState({email: event.target.value })} placeholder="Enter email" />
+    <Form.Control type="email" value={this.state.email} onChange = {this.handleEmail} placeholder="Enter email" />
   </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1">
     <Form.Label>Message</Form.Label>
-    <Form.Control as="textarea" placeholder="Hi, Could you help out with my goals? Go to the url (http://localhost:3000/) to access my profile." onChange = {(event) => this.setState({message: event.target.value })} rows="3"/>
+    <Form.Control as="textarea" value={this.state.message} placeholder="Hi, Could you help out with my goals? Go to the url (http://localhost:3000/) to access my profile." onChange = {this.handleMessage} rows="3"/>
   </Form.Group>
+  <Button type="submit">Submit </Button>
     </Form>
-    <Button variant="primary" type="submit" onClick={(event) => this.handleSubmit(event)}>
-    Send
-  </Button>
+    
     </div>
   );
 }
 
 }
+
+
+
+/*
+<Button variant="primary" type="submit" onClick={(event) => this.handleSubmit(event)}>
+    Send
+  </Button>
+*/

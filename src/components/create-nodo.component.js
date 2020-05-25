@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class CreateTodo extends Component {
+export default class CreateNodo extends Component {
     constructor(props) {
         super(props);
         this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
@@ -46,14 +46,14 @@ export default class CreateTodo extends Component {
         console.log(`Todo Responsible: ${this.state.todo_responsible}`);
         console.log(`Todo Priority: ${this.state.todo_priority}`);
 
-        const newTodo = {
+        const newNodo = {
             todo_description: this.state.todo_description,
             todo_responsible: this.state.todo_responsible,
             todo_priority: this.state.todo_priority,
             todo_completed: this.state.todo_completed
         };
 
-        axios.post('http://localhost:4000/todos/add', newTodo)
+        axios.post('http://localhost:4000/todos/node/add', newNodo)
             .then(res => console.log(res.data));
 
         alert('Goal added successfully');

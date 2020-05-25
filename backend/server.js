@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const todoRoutes = express.Router();
+const axios = require('axios');
+const nodemailer = require('nodemailer');
 const PORT = 4000;
+const userId = "Shubhankar G.";
 
 
 const FitbitApiClient = require("fitbit-node");
@@ -92,7 +95,7 @@ todoRoutes.route('/nodo').get(function(req, res) {
 todoRoutes.route('/nodo/:id').get(function(req, res) {
     console.log('Here: /nodo/:id');
     let id = req.params.id;
-    Nodo.findById(id, function(err, todo) {
+    Nodo.findById(id, function(err, nodo) {
         console.log(err);
         res.json(nodo);
     });
@@ -203,8 +206,50 @@ todoRoutes.route('/').get(function(req, res) {
     });
 });
 
+todoRoutes.route('/todo/heart-rate', (req, res) => {
+    axios.get(`https://api.fitbit.com/1/user/${userId}/activities/heart/date/today/1d.json`).then(response => {
+        res.json(response.data);
+    }).catch(err => {
+        console.log(err);
+    })
+});
+
+
 
 //---------------------
+
+//Post incoming mail data
+app.post('/api/form', async (req,res) => {
+    let testAccount = await nodemailer.createTestAccount();
+    
+    let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: 'billy.grant34@ethereal.email', // generated ethereal user
+          pass: 'cqg1Va3VYAbEVwGhSm', // generated ethereal password
+        },
+      });
+       
+      let info = await transporter.sendMail({
+        from: '"Shubhankar Gupta 👻" <shubhankargupta@gmail.com>', // sender address
+        to: "shubhankargupta@gmail.com", // list of receivers
+        subject: "Hello ✔", // Subject line
+        text: "Hello world?", // plain text body
+        html: "<b>Hello world?</b>", // html body
+      });
+
+      console.log("Message sent: %s", info.messageId);
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+  // Preview only available when sending through an Ethereal account
+       console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+    console.log("Hello!");
+   console.log(req.body);
+});
+
 
 // Log incoming requests
 app.use((req, res, next) => {
@@ -217,6 +262,7 @@ app.use((err, req, res, next) => {
         message: "Not Found!"
     });
 });
+
 
 app.use('/todos', todoRoutes);
 

@@ -25,7 +25,7 @@ import ChangingProgressProvider from "./ChangingProgressProvider";
 import RadialSeparators from "./RadialSeparators";
 
 
-export default class LineGraph extends Component
+export default class NodosData extends Component
 {
 
 	constructor(props)
@@ -35,12 +35,12 @@ export default class LineGraph extends Component
 		this.state={
 			spercentage : 49,
             cpercentage : 56,
-            name: 'Shubhankar Gupta',
+            name: 'David Miller',
             gender: 'male',
-            weight: 55,
-            height: 156,
+            weight: 65,
+            height: 162,
             isEditing: false,
-            rating: 4.89
+            rating: 4.76
 		}
 
 		this.nameChange=this.nameChange.bind(this);
@@ -98,10 +98,7 @@ export default class LineGraph extends Component
 			     <form style={{display: "flex", justifyContent : "space-between", width: "100%"}} onSubmit={this.handleSubmit}>
                 <div>
                 <p>Name:</p>
-                   { this.state.isEditing ? <input
-                     type='text'
-                     value={this.state.name}
-                      onChange={this.nameChange} />  : <strong>{this.state.name}</strong>}
+                   <strong>{this.state.name}</strong>
                    </div>
 
                 <div>    
@@ -114,29 +111,18 @@ export default class LineGraph extends Component
 
                 <div>      
                 <p> Weight (lb): </p>
-                    {this.state.isEditing ? <input type='number'
-                    value = {this.state.weight} 
-                    onChange={this.weightChange}
-                   /> : <strong>{this.state.weight}</strong>}
+                     <strong>{this.state.weight}</strong>
                  </div>
                    
                 <div>   
                 <p> Height (cm): </p>
-                    {this.state.isEditing ? <input type='number'
-                    value = {this.state.height} 
-                    onChange={this.heightChange}
-                   /> : <strong>{this.state.height}</strong> }
+                   <strong>{this.state.height}</strong> 
                  </div>
 
                  <div>   
                 <p> Rating: </p>
                      <strong>{this.state.rating}</strong> 
                  </div>
-                  
-                    
-                   {!this.state.isEditing ? <Button style={{alignSelf: "center"}} onClick={this.onEdit}>Edit</Button> :
-                   <Button style={{alignSelf: "center"}} onClick={this.onSave}>Save</Button>}
-
 
                   </form>
                   </div>
@@ -144,7 +130,7 @@ export default class LineGraph extends Component
         <br/>
         <br/>
 
-        <h2><strong>Your Stats for May 24, 2020:</strong></h2>
+        <h2><strong>David Stats for May 24, 2020:</strong></h2>
         <br/>
                  <Chart
   width={'600px'}
@@ -153,13 +139,13 @@ export default class LineGraph extends Component
   loader={<div>Loading Chart</div>}
   data={[
     ['x', 'heart'],
-    [0, 20],
-    [1, 15],
+    [0, 30],
+    [1, 25],
     [2, 23],
     [3, 17],
     [4, 18],
-    [5, 9],
-    [6, 11],
+    [5, 23],
+    [6, 10],
     [7, 27],
     [8, 33],
     [9, 40],
@@ -178,9 +164,9 @@ export default class LineGraph extends Component
 />
 
     <br/> 
-    <h3>Total Steps Completed: 77% of 8000 </h3>
+    <h3>Total Steps Completed: 68% of 8000 </h3>
     <Example>
-      <CircularProgressbarWithChildren value={66}>
+      <CircularProgressbarWithChildren value={68}>
         {/* Put any JSX content in here that you'd like. It'll be vertically and horizonally centered. */}
         <img
           style={{ width: 80, marginTop: -5 }}
@@ -194,9 +180,9 @@ export default class LineGraph extends Component
     </Example>
    
   
-    <h3> Total Calories burned: 49% of 150 kcals </h3>
+    <h3> Total Calories burned: 80% of 150 kcals </h3>
     <Example>
-      <CircularProgressbarWithChildren value={49}>
+      <CircularProgressbarWithChildren value={80}>
         {/* Put any JSX content in here that you'd like. It'll be vertically and horizonally centered. */}
         <img
           style={{ width: 80, marginTop: -5 }}

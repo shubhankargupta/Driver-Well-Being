@@ -7,15 +7,15 @@ import Alert from 'react-bootstrap/Alert';
 import Rating from '@material-ui/lab/Rating';
 import { makeStyles } from '@material-ui/core/styles';
 
-const Todo = props => (
+const Nodo = props => (
 
     <tr>
-        <td>{props.todo.todo_description}</td>
-        <td>{props.todo.todo_responsible}</td>
-        <td>{props.todo.todo_priority}</td>
-        <td>{props.todo.todo_completed ? "Done" : "In Progress"}</td>
+        <td>{props.nodo.todo_description}</td>
+        <td>{props.nodo.todo_responsible}</td>
+        <td>{props.nodo.todo_priority}</td>
+        <td>{props.nodo.todo_completed ? "Done" : "In Progress"}</td>
         <td>
-            <Link to={"/edit/"+props.todo._id}><Button variant="primary">Edit</Button>{' '}</Link>                                
+            <Link to={"/nodo/edit/"+props.nodo._id}><Button variant="primary">Edit</Button>{' '}</Link>                                
         </td>
         <td>
             <Button variant="danger" onClick={deletePlayer.bind(this,props)} > Delete </Button>
@@ -23,26 +23,13 @@ const Todo = props => (
     </tr>
 )
 
-/*
-<tr>
-        <td>{props.todo.todo_description}</td>
-        <td>{props.todo.todo_responsible}</td>
-        <td>{props.todo.todo_priority}</td>
-        <td>
-            <Link to={"/edit/"+props.todo._id}>Edit</Link>                                
-        </td>
-        <td>
-            <a href="#!" onClick={deletePlayer.bind(this,props)}> Delete </a>
-        </td>
-    </tr>
-    <h3 style={{marginRight: 2 + 'em'}} > {this.state.label} </h3>
-*/
+
 
 
 function deletePlayer(props)
 {
     console.log('Hello, This is Shubhankar');
-    axios.delete(`http://localhost:4000/todos/delete/${props.todo._id}`)
+    axios.delete(`http://localhost:4000/todos/nodo/delete/${props.nodo._id}`)
     .then(res => res.data)
 
     setTimeout(window.helloComponent.componentDidMount(),2000);
@@ -50,11 +37,11 @@ function deletePlayer(props)
 }
 
 
-export default class TodosList extends Component {
+export default class NodosList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {todos: [],
+        this.state = {nodos: [],
                       showLabel : true,
                       label: 'Days until to reset goals: 5'};
         window.helloComponent = this;
@@ -71,9 +58,9 @@ export default class TodosList extends Component {
   }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/todos/')
+        axios.get('http://localhost:4000/todos/nodo')
             .then(response => {
-                this.setState({ todos: response.data });
+                this.setState({ nodos: response.data });
             })
             .catch(function (error){
                 console.log(error);
@@ -83,9 +70,9 @@ export default class TodosList extends Component {
 
     }
 
-    todoList() {
-        return this.state.todos.map(function(currentTodo, i){
-            return <Todo todo={currentTodo} key={i} />;
+    nodoList() {
+        return this.state.nodos.map(function(currentNodo, i){
+            return <Nodo nodo={currentNodo} key={i} />;
         })
     }
 
@@ -96,10 +83,9 @@ export default class TodosList extends Component {
             <div>
               <div>
               <Alert variant="success">
-  <Alert.Heading>Hey, nice to see you</Alert.Heading>
-  <p>
-    Aww yeah, are you keeping up with your goals? 5 days left until to reset your goals!!
-  </p>
+  <Alert.Heading>
+     Add/Update daily goals for David?
+  </Alert.Heading>
   <hr />
   </Alert>
               
@@ -108,15 +94,15 @@ export default class TodosList extends Component {
                     <thead>
                         <tr>
                             <th>Activity</th>
-                            <th>Duration</th>
-                            <th>Days</th>
+                            <th>Target/Day</th>
+                            <th>Priority</th>
                             <th>Status</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        { this.todoList() }
+                        { this.nodoList() }
                     </tbody>
                 </table>
   
@@ -124,7 +110,20 @@ export default class TodosList extends Component {
             <br/>
             
 
+            <div class="left-btn">
+             <Link to="/nodo-data"><Button variant="primary">View David's Data</Button>{' '}</Link>
+           </div>
             
+
+           <div class="right-btn">
+             <Link to="/nodo-create"><Button variant="primary">Add Activity</Button>{' '}</Link>
+           </div>
+
+
+           <br/>
+           <br/>
+
+           <h6><strong>Last Updated: Mon, 25 May 2020 08:00:00 PST by Shubhankar </strong></h6>
                   
 
 
