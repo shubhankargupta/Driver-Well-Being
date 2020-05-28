@@ -45,10 +45,15 @@ export default class TodosList extends Component {
             todos: [],
             showLabel: true,
             label: 'Days until to reset goals: 5',
+            isEditing: false,
+            steps: 7000,
+            cal: 150,
             isShowingDialog: false
         };
         window.helloComponent = this;
         this.myFunction = this.myFunction.bind(this);
+        this.stepChange = this.stepChange.bind(this);
+        this.calChange = this.calChange.bind(this);
     }
 
     myFunction() {
@@ -86,6 +91,37 @@ export default class TodosList extends Component {
           }) 
     }
 
+    stepChange(e)
+    {
+     this.setState({steps: e.target.value});
+    }
+
+   calChange(e)
+   {
+    this.setState({cal: e.target.value})
+   }  
+
+   onEdit = () =>
+   {
+     this.setState( (state) => {
+       return {isEditing: !state.isEditing}
+     }) 
+
+   }
+
+   onSave = () =>
+   {
+     this.setState( (state) => {
+       return {isEditing: !state.isEditing}
+     }) 
+
+   }
+
+   handleSubmit = (e) =>
+   {
+     e.preventDefault();
+   }
+
 
 
     render() {
@@ -99,6 +135,35 @@ export default class TodosList extends Component {
                         </p>
                         <hr />
                     </Alert>
+
+                    <div className='rowC'>
+			     <form style={{display: "flex", justifyContent : "space-between", width: "100%"}} onSubmit={this.handleSubmit}>
+                <div>
+                <p>Target Number of steps/day:</p>
+                   { this.state.isEditing ? <input
+                     type='number'
+                     value={this.state.steps}
+                      onChange={this.stepChange} />  : <strong>{this.state.steps}</strong>}
+                   </div>
+
+                <div>  
+                <p> Target Number of Calories (lb)/day: </p>
+                    {this.state.isEditing ? <input type='number'
+                    value = {this.state.cal} 
+                    onChange={this.calChange}
+                   /> : <strong>{this.state.cal}</strong>}
+                 </div>
+                   
+                    
+                   {!this.state.isEditing ? <Button style={{alignSelf: "center"}} onClick={this.onEdit}>Edit</Button> :
+                   <Button style={{alignSelf: "center"}} onClick={this.onSave}>Save</Button>}
+
+
+                  </form>
+                  </div>
+                 
+                 <br/>
+                 <br/>
 
                 </div>
                 <table className="table table-hover" style={{ marginTop: 20 }} >
@@ -134,7 +199,7 @@ export default class TodosList extends Component {
                 <br />
                 <br />
                 <Alert variant="info">
-                    Would you like to rate Samuel for supporting you?
+                    Would you like to rate Samuel for today's goals?
             </Alert>
                 <Rating name="hover-feedback" defaultValue={2} precision={0.5} onChange={(event, newValue) => {
                    this.setState( (state) => {
@@ -158,3 +223,4 @@ export default class TodosList extends Component {
         )
     }
 }
+

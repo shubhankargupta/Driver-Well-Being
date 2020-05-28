@@ -32,7 +32,7 @@ class App extends Component {
                   <Link to="/myinfo" className="nav-link"><b>My Info</b></Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/show" className="nav-link"><b>My Supporter</b></Link>
+                  <Link to="/show" className="nav-link"><b>My Goals</b></Link>
                 </li>
                 <li className="navbar-item">
                   <Link to="/dup" className="nav-link"><b>Supportee</b></Link>
