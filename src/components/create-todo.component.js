@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import Select from 'react-select';
+
+
 
 export default class CreateTodo extends Component {
     constructor(props) {
@@ -10,6 +13,8 @@ export default class CreateTodo extends Component {
         this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
+            selectedOption: {},
+            selectedOption2: {},
             todo_description: '',
             todo_responsible: '',
             todo_priority: '',
@@ -37,6 +42,16 @@ export default class CreateTodo extends Component {
             todo_completed: !this.state.todo_completed
         });
     }
+
+    handleChange1 = (selectedOption) => {
+        this.setState({selectedOption});
+        this.setState({todo_description: selectedOption.label});
+      };
+    
+      handleChange2 = (selectedOption) => {
+        this.setState({selectedOption2: selectedOption});
+        this.setState({todo_responsible: selectedOption.label});
+      }
 
     onSubmit(e) {
         e.preventDefault();
@@ -70,28 +85,45 @@ export default class CreateTodo extends Component {
     
 
     render() {
+
+        const options1 = [
+            {value: 'one', label: 'Jogging'},
+            {value: 'two', label: 'Biking'}
+          ];
+      
+          const options2 = [
+            {value: 'one-a', label: '10 miles', link: 'one'},
+            {value: 'one-b', label: '20 miles', link: 'one'},
+            {value: 'two-a', label: '4 miles', link: 'two'},
+            {value: 'two-b', label: '3 miles', link: 'two'}
+          ];
+
+          const filteredOptions = options2.filter((o) => o.link === this.state.selectedOption.value)
+
+
         return (
             <div style={{marginTop: 10}}>
                 <h3>Add New Activity</h3>
 
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group"> 
-                        <label>Description: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.todo_description}
-                                onChange={this.onChangeTodoDescription}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Duration: </label>
-                        <input 
-                                type="text" 
-                                className="form-control"
-                                value={this.state.todo_responsible}
-                                onChange={this.onChangeTodoResponsible}
-                                />
-                    </div>
+                    <Fragment>
+                        <label>Activity: </label>
+                        <Select
+                            name="form-field-name"
+                            value={{label:this.state.selectedOption.label}}
+                            onChange={this.handleChange1}
+                            options={options1}
+                        />
+                    
+                    
+                        <label>Target/Day: </label>
+                        <Select
+                            name="form-field-name"
+                            value={{label: this.state.selectedOption2.label}}
+                            onChange={this.handleChange2}
+                            options={filteredOptions}
+                        />
+                    </Fragment>
 
                     <div className="form-group">
                         <div className="form-check form-check-inline">

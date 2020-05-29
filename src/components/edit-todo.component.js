@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Select from 'react-select';
+
 
 export default class EditTodo extends Component {
 
@@ -13,6 +15,8 @@ export default class EditTodo extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            selectedOption: {},
+            selectedOption2: {},
             todo_description: '',
             todo_responsible: '',
             todo_priority: '',
@@ -27,12 +31,15 @@ export default class EditTodo extends Component {
                     todo_description: response.data.todo_description,
                     todo_responsible: response.data.todo_responsible,
                     todo_priority: response.data.todo_priority,
-                    todo_completed: response.data.todo_completed
+                    todo_completed: response.data.todo_completed 
                 })   
             })
             .catch(function (error) {
                 console.log(error);
             })
+
+            console.log(this.state.todo_description);
+            console.log(this.state.todo_responsible);
     }
 
     onChangeTodoDescription(e) {
@@ -59,6 +66,16 @@ export default class EditTodo extends Component {
         });
     }
 
+    handleChange1 = (selectedOption) => {
+        this.setState({selectedOption});
+        this.setState({todo_description: selectedOption.label});
+      };
+    
+    handleChange2 = (selectedOption) => {
+        this.setState({selectedOption2: selectedOption});
+        this.setState({todo_responsible: selectedOption.label});
+      };
+
     onSubmit(e) {
         e.preventDefault();
         const obj = {
@@ -77,27 +94,56 @@ export default class EditTodo extends Component {
     }
 
     render() {
+
+        const options1 = [
+            {value: 'one', label: 'Jogging'},
+            {value: 'two', label: 'Biking'}
+          ];
+      
+          const options2 = [
+            {value: 'one-a', label: '10 miles', link: 'one'},
+            {value: 'one-b', label: '20 miles', link: 'one'},
+            {value: 'two-a', label: '4 miles', link: 'two'},
+            {value: 'two-b', label: '3 miles', link: 'two'}
+          ];
+
+          var x = this.state.todo_description;
+          var ans;
+
+          for(var i=0;i<options1.length;i++)
+          {
+              if(options1[i].label=== this.state.todo_description)
+              {
+                 ans = options1[i].value;
+              }
+          }
+
+          const filteredOptions = options2.filter((o) => o.link === ans)
+
+
+
         return (
             <div>
                 <h3 align="center">Update Todo</h3>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group"> 
-                        <label>Description: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.todo_description}
-                                onChange={this.onChangeTodoDescription}
-                                />
-                    </div>
-                    <div className="form-group">
-                        <label>Duration: </label>
-                        <input 
-                                type="text" 
-                                className="form-control"
-                                value={this.state.todo_responsible}
-                                onChange={this.onChangeTodoResponsible}
-                                />
-                    </div>
+ 
+                <label>Activity: </label>
+                        <Select
+                            name="form-field-name"
+                            value={{label:this.state.todo_description}}
+                            onChange={this.handleChange1}
+                            options={options1}
+                        />
+                    
+                    
+                <label>Target/Day: </label>
+                        <Select
+                            name="form-field-name"
+                            value={{label: this.state.selectedOption2.label}}
+                            onChange={this.handleChange2}
+                            options={filteredOptions}
+                        />
+
                     <div className="form-group">
                         <div className="form-check form-check-inline">
                             <input  className="form-check-input" 

@@ -38,7 +38,7 @@ class App extends Component {
                   <Link to="/dup" className="nav-link"><b>Supportee</b></Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/email" className="nav-link"><b>Share Data</b></Link>
+                  <Link to="/email" className="nav-link"><b>Give Access</b></Link>
                 </li>
               </ul>
             </div>
