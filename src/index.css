@@ -1,23 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-     background-color: #FFFFCC !important;
-
+  background-color: #ffffcc !important;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 .completed {
   text-decoration: line-through;
 }
-
 
 h3 {
   text-align: left;
@@ -26,15 +28,43 @@ h3 {
 .center-elements {
   width: 200px;
   height: 300px;
-   margin: 0 auto;
+  margin: 0 auto;
 }
 
-.left-btn { float: left; }
-.right-btn { float: right; }
-.center-btn {float: center;}
+.left-btn {
+  float: left;
+}
+.right-btn {
+  float: right;
+}
+.center-btn {
+  float: center;
+}
 
-.rowC{display:flex; flex-direction:row;}
+.rowC {
+  display: flex;
+  flex-direction: row;
+}
 
-h1, p {
-  font-family: Lato;
+h1,
+p {
+  font-family: "Helvetica Neue";
+  font-size: large;
+  font-weight: 500;
+}
+
+.nav-item {
+  flex: 1;
+}
+
+.nav-item > a {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 24px;
+}
+
+.is-active {
+  color: green;
+  background-color: darkorange;
 }

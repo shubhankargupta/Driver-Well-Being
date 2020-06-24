@@ -11,8 +11,10 @@ import About from "./components/about.component";
 import CreateNodo from "./components/create-nodo.component";
 import EditNodo from "./components/edit-nodo.component";
 import NodosData from "./components/nodos-data.component";
+import Home from "./components/home";
 import logo from "./wellbeing.png";
 import Scrollspy from 'react-scrollspy';
+import ScrollspyNav from "react-scrollspy-nav";
 
 
 
@@ -20,31 +22,8 @@ class App extends Component {
   render() {
     return (
       <Router> 
-       <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="https://www.fitbit.com/us/home" target="_blank">
-              <img src={logo} width="100" height="100" alt="CodingTheSmartWay.com" />
-            </a>
-            <Link to="/" className="navbar-brand">Getting Started</Link>                                                                         
-            <div className="collpase navbar-collapse">
-              <ul className="navbar-nav mr-auto">
-              <li className="navbar-item">
-                  <Link to="/myinfo" className="nav-link"><b>My Info</b></Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/show" className="nav-link"><b>My Goals</b></Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/dup" className="nav-link"><b>Supportee</b></Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/email" className="nav-link"><b>Give Access</b></Link>
-                </li>
-              </ul>
-            </div>
-          </nav> 
-
-          <br/>
+          
+          
           
         <Switch>
           <Route path="/myinfo" component={LineGraph} />
@@ -56,9 +35,11 @@ class App extends Component {
           <Route path="/nodo-create" component={CreateNodo} />
           <Route path="/nodo/edit/:id" component = {EditNodo}/>
           <Route path="/nodo-data" component= {NodosData} />
-          <Route exact path="/" component={About}/>
+          <Route exact path="/about" component={About}/>
+          <Route path="/" component={Home} />
           </Switch>
-        </div> 
+          
+            
       </Router>
       
     );

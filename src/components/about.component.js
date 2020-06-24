@@ -1,21 +1,21 @@
 //import  Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import { useState } from 'react';
-import { render } from 'react-dom';
+import { useState } from "react";
+import { render } from "react-dom";
 
-import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import React, { Component } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import StepContent from "@material-ui/core/StepContent";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: "100%",
   },
   button: {
     marginTop: theme.spacing(1),
@@ -30,27 +30,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['My Info', 'My Goals', 'Supportee','Share Data'];
+  return ["My Info", "My Goals", "Peer Goals", "Share Data"];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return `This tab allows to see how many steps you took, how many calories you burned and how your heart rate varied for the past 24 hours and whether you achieved your target or not.`;
+      return `This tab allows to see how many steps you took, how many calories you burned, how many miles you covered and how your heart rate varied for the past 24 hours and whether you achieved your daily targets or not.`;
     case 1:
-      return 'This tab allows you to view your daily targets and activities set by your supporter for you to achieve in next 24 hours. Rate your supporter to reward them for their contribution towards your well being.';
+      return "This tab allows you to view your daily targets and activities set by your supporter for you to achieve in next 24 hours. Rate your supporter to reward them for their contribution towards your well being.";
     case 2:
       return `This tab allows you to be a supporter yourself and help set daily goals for others.`;
     case 3:
       return `See for the top rated supporters and ask one to be your supporter.`;
     default:
-      return 'Unknown step';
+      return "Unknown step";
   }
 }
 
-
 export default function About() {
-
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -66,25 +64,27 @@ export default function About() {
   const handleReset = () => {
     setActiveStep(0);
   };
-  
 
-  
+  const mystyle = {
+    color: "black",
+    padding: "10px",
+    fontFamily: "Georgia",
+  };
 
-     const mystyle = {
-      color: "black",
-      padding: "10px",
-      fontFamily: "Georgia"
-    };
+  const parastyle = {
+    color: "green",
+    padding: "10px",
+    fontFamily: "Georgia",
+  };
 
-    const parastyle = {
-      color: "green",
-      padding: "10px",
-      fontFamily: "Georgia"
-    };
-
-    return (
-         
-      <div className={classes.root}>
+  return (
+    <div
+      className={classes.root}
+      style={{
+        marginBottom: "80px",
+        backgroundColor: "white",
+      }}
+    >
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>
@@ -106,7 +106,7 @@ export default function About() {
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
                   </Button>
                 </div>
               </div>
@@ -115,27 +115,24 @@ export default function About() {
         ))}
       </Stepper>
       {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
+        <div style={{ padding: "24px" }}>
           <Typography>All steps completed - you&apos;re finished</Typography>
           <Button onClick={handleReset} className={classes.button}>
             Reset
           </Button>
-        </Paper>
+        </div>
       )}
+    </div>
+  );
+}
 
+/*
 <div class="left-btn">
        <Link to="/myinfo"><Button variant="contained" color="primary">
   Get Started
 </Button></Link>
 </div>
-
-    </div>
-          
-    );
-  }
-
-
-
+*/
 
 /*<div>
 
@@ -171,5 +168,3 @@ export default function About() {
 
 </div>
 */
-
-
