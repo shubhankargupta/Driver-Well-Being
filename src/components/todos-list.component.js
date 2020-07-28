@@ -128,7 +128,7 @@ export default class TodosList extends Component {
           <Alert variant="success">
             <Alert.Heading>Hey, nice to see you</Alert.Heading>
             <p>
-              Samuel has challenged you to complete goals for June 18. Would you
+              Samuel has challenged you to complete goals for June 24. Would you
               like to give it a try?
             </p>
             <hr />
@@ -219,7 +219,7 @@ export default class TodosList extends Component {
         <div style={{ paddingTop: "50px", paddingLeft: "10px" }}>
           <h6>
             <strong>
-              Last Updated: Thurs, 18 June 2020 06:00:00 PST by Samuel{" "}
+              Last Updated: Thurs, 24 June 2020 06:00:00 PST by Samuel{" "}
             </strong>
           </h6>
         </div>

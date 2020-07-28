@@ -130,7 +130,7 @@ export default class NodosList extends Component {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Alert variant="success">
             <Alert.Heading>
-              Hey! Want to see Samuel's daily progress for June 17, 2020?
+              Hey! Want to see Samuel's daily progress for June 23, 2020?
             </Alert.Heading>
             <hr />
           </Alert>
@@ -246,7 +246,7 @@ export default class NodosList extends Component {
         <div style={{ paddingLeft: "10px" }}>
           <h6>
             <strong>
-              Last Updated: Thurs, June 18 2020 08:00:00 PST by Shubhankar{" "}
+              Last Updated: Thurs, June 24 2020 08:00:00 PST by Shubhankar{" "}
             </strong>
           </h6>
         </div>

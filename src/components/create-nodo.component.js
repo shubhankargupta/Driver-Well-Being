@@ -85,15 +85,30 @@ export default class CreateNodo extends Component {
       { value: "one", label: "Jogging" },
       { value: "two", label: "Biking" },
       { value: "three", label: "Push-ups" },
+      { value: "four", label: "Walking" },
+      { value: "five", label: "Planks" },
+      { value: "six", label: "Squats" },
     ];
 
     const options2 = [
       { value: "one-a", label: "1 miles", link: "one" },
       { value: "one-b", label: "2 miles", link: "one" },
-      { value: "two-a", label: "4 miles", link: "two" },
-      { value: "two-b", label: "3 miles", link: "two" },
-      { value: "three-a", label: "20 reps", link: "three" },
-      { value: "three-b", label: "30 reps", link: "three" },
+      { value: "one-c", label: "3 miles", link: "one" },
+      { value: "two-a", label: "5 miles", link: "two" },
+      { value: "two-b", label: "6 miles", link: "two" },
+      { value: "two-c", label: "7 miles", link: "two" },
+      { value: "three-a", label: "10 reps", link: "three" },
+      { value: "three-b", label: "15 reps", link: "three" },
+      { value: "three-c", label: "20 reps", link: "three" },
+      { value: "four-a", label: "1.5 miles", link: "four" },
+      { value: "four-b", label: "2.5 miles", link: "four" },
+      { value: "five-a", label: "10 sec", link: "five" },
+      { value: "five-b", label: "20 sec", link: "five" },
+      { value: "five-c", label: "30 sec", link: "five" },
+      { value: "six-a", label: "36 reps", link: "six" },
+      { value: "six-b", label: "39 reps", link: "six" },
+      { value: "six-c", label: "42 reps", link: "six" },
+      { value: "six-d", label: "45 reps", link: "six" },
     ];
 
     const filteredOptions = options2.filter(

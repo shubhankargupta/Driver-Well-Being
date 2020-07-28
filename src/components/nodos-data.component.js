@@ -121,7 +121,7 @@ export default class NodosData extends Component {
         <br />
 
         <h2>
-          <strong>Samuel's Fitbit Stats for June 17, 2020:</strong>
+          <strong>Samuel's Fitbit Stats for June 23, 2020:</strong>
         </h2>
         <br />
         <Card style={{ width: "1300px", height: "600px" }}>

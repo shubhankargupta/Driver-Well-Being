@@ -161,7 +161,7 @@ export default class LineGraph extends Component {
           }}
         >
           <h2>
-            <strong>Your Fitbit Stats for June 17, 2020:</strong>
+            <strong>Your Fitbit Stats for June 23, 2020:</strong>
           </h2>
           <br />
           <Card style={{ width: "1300px", height: "600px" }}>
